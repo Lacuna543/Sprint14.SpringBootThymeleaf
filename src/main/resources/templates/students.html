@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> -->
+</head>
+<body>
+<h2>List of users</h2>
+<table>
+    <tr>
+        <th>Lastname</th> <th>Firstname</th>  <th></th>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.getFirstName()}" />
+        <td th:text="${user.getLastName()}" />
+        <td>
+    <a th:href="@{/delete/{userId}(id=${user.id})}"> Remove </a>
+</td>
+    </tr>
+</table>
+
+</body>
+
+</html>
