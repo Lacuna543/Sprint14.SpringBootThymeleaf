@@ -45,6 +45,6 @@ public class User {
     @ManyToMany(mappedBy = "users")
     private List<Marathon> marathons;
 
-    @OneToMany(mappedBy = "trainee")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "trainee")
     private List<Progress> progresses;
 }
