@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Marathon</title>
+</head>
+<body>
+<h1>Edit</h1>
+<form method="post">
+<table border="1">
+    <tr>
+        <td>
+            Marathon Name
+        </td>
+        <td>
+            <input name="title" type="text" th:value="${marathon.title}" />
+            <input name="id" type="hidden" th:value="${marathon.id}">
+        </td>
+
+    </tr>
+</table>
+<br>
+    <input type="submit" value="save">
+</form>
+</body>
+</html>

@@ -5,7 +5,46 @@
     <title>Marathons</title>
 </head>
 <body>
-<a href="/marathons">Marathons</a>
-<p th:text="${message}"></p>
+<h2> Marathons</h2>
+<table border="1">
+    <tr th:each="marathon, index : ${marathons}">
+        <td th:text="${index.count}"></td>
+        <td th:text="${marathon.title}"></td>
+        <td>
+        <form th:action="@{/marathons/edit/{id}(id=${marathon.id})}">
+            <!--            <form th:action="${marathon.id}"> -->
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+                <td>
+                    <form action="/marathons"> <!-- TODO -->
+                <input type="submit" value="Close"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<form action="/marathons/create">
+    <input type="submit" value="Create marathon"/>
+</form>
+<!--<p th:text="${}"> Marathons </p>
+<form method='post' action='/marathons'>
+    <label>
+        <input type ='text' marathon = 'Your marathons'/>
+    </label>
+</form>
+<tr>
+    <th>Marathons</th>
+</tr>
+&lt;!&ndash;<a href="/marathons">Marathons</a>&ndash;&gt;
+<tr th:each="marathon: ${marathons}">
+    <td th:text="${marathon.getTitle()}"></td>
+
+    <td>э
+        <a th:href="/marathons">Marathons</a>
+        <a th:href="@{/delete/{marathonId}(id=${marathon.id})}"> Remove </a>
+    </td>
+</tr>
+<p th:text="${marathon}"></p>-->
 </body>
 </html>
