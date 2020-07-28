@@ -23,6 +23,11 @@ public class MarathonController {
         model.addAttribute("marathon", new Marathon());
         return "createMarathon";
     }
+    @PostMapping("/marathons/create")
+    public String createMarathons(@ModelAttribute Marathon marathon, Model model) {
+        model.addAttribute(marathonService.createOrUpdate(marathon));
+        return "redirect:/marathons";
+    }
 
     @GetMapping("/marathons/edit/{id}")
     public String editMarathon(@PathVariable("id") Long id, Model model) {
@@ -32,14 +37,14 @@ public class MarathonController {
     @PostMapping("/marathons/edit/{id}")
     public String saveMarathon(@PathVariable("id") Long id, @ModelAttribute Marathon marathon, Model model) {
         model.addAttribute("marathon", marathonService.createOrUpdate(marathon));
-        return "editMarathon";
+        return "redirect:/marathons";
+    }
+
+    @DeleteMapping("/marathons/close/{id}")
+    public String closeMarathons(@PathVariable("id") Long id) {
+        marathonService.deleteMarathonById(id);
+        return "redirect:/marathons";
     }
 
 
-
-    @GetMapping("/marathons/close")
-    public String closeMarathons(Model model) {
-        //model.addAttribute("marathons", marathonService.createOrUpdate(marathonService.getId()));
-        return "editMarathon";
-    }
 }

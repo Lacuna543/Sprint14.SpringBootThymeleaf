@@ -11,14 +11,13 @@
         <td th:text="${index.count}"></td>
         <td th:text="${marathon.title}"></td>
         <td>
-        <form th:action="@{/marathons/edit/{id}(id=${marathon.id})}">
-            <!--            <form th:action="${marathon.id}"> -->
-                        <input type="submit" value="Edit">
-                    </form>
-                </td>
-                <td>
-                    <form action="/marathons"> <!-- TODO -->
-                <input type="submit" value="Close"/>
+            <form th:action="@{/marathons/edit/{id}(id=${marathon.id})}">
+                <input type="submit" value="Edit">
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/marathons/close/{id}(id=${marathon.id})}">
+            <input type="submit" value="Close"/>
             </form>
         </td>
     </tr>

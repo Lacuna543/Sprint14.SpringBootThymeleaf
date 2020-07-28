@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Close Marathon</title>
+</head>
+<body>
+<h1> Close marathon</h1> //TODO
+<form th:action="@{/marathons/close}" th:object="${marathon}" method="post">
+    <input type="hidden" th:value="${marathon.id}"/>
+<!--    <button type="submit" value="Submit" class="btn btn-danger">Delete</button>    <p><input type="submit" value="Add marathon"/></p>-->
+</form>
+
+</body>
+</html>
