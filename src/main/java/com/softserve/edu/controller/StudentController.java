@@ -24,6 +24,7 @@ public class StudentController {
     @GetMapping("/students")
     public String getAllMarathons(Model model) {
         model.addAttribute("users", userService.getAll());
+        model.addAttribute("marathons", marathonService.getAll());
         return "students";
 
     }
@@ -36,6 +37,24 @@ public class StudentController {
        return "redirect:/students";
     }
 
+    @GetMapping("students/{marathonId}/add")
+    public String addUser(@PathVariable(name="marathonId") Long marathonId, Model model) {
 
+        Marathon m = marathonService.getMarathonById(marathonId);
+        model.addAttribute("marathon", m);
+        model.addAttribute("student", new User());
+        return "student";
+    }
+
+    @GetMapping("students/{marathonId}/edit/{userId}")
+    public String editUser(@PathVariable(name="marathonId") Long marathonId,
+                           @PathVariable(name="userId") Long userId, Model model) {
+
+        //Marathon m = marathonService.getMarathonById(marathonId);
+        User stud = userService.getUserById(userId);
+        model.addAttribute("student", stud);
+        //userService.deleteUserFromMarathon(stud, m);
+        return "student";
+    }
 
 }
