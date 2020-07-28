@@ -50,4 +50,17 @@ public class UserServiceImpl implements UserService {
         marathonEntity.getUsers().add(userEntity);
         return marathonRepository.save(marathonEntity) != null;
     }
+
+    @Override
+    public boolean deleteUserFromMarathon(User user, Marathon marathon) {
+        User userEntity = userRepository.getOne(user.getId());
+        Marathon marathonEntity = marathonRepository.getOne(marathon.getId());
+        marathonEntity.getUsers().remove(userEntity);
+        return marathonRepository.save(marathonEntity) != null;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
 }

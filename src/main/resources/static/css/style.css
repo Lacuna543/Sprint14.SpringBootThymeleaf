@@ -1,0 +1,10 @@
+
+TABLE {
+
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+}
+
+TD, TH {
+
+    border: 1px solid black; /* Параметры рамки */
+}
