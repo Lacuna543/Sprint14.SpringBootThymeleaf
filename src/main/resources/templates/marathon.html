@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
     <title>One Marathon</title>
 </head>
 <body>
-<h2>Info about marathon</h2> TODO
-<form th:action="@{/marathons/marathon}" th:object="${marathon}" method="post">
-    <button type="submit" value="Submit" >Close</button>    <!--<p><input type="submit" value="Add marathon"/></p>-->
-    <input type="hidden" th:value="${marathon.id}"/>
-</form>
+<div class="container">
+<h2>Info about marathon</h2>
+<table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tbody>
+    <tr th:each="student, index : ${marathon.users}">
+        <td>
+            <form th:action="@{/students/{marathonId}/edit/{studentId}(marathonId=${marathon.id},studentId=${student.id})}">
+                <input type="submit"th:value="${student.firstName}+' '+ ${student.lastName}">
+            </form>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/marathons}" class="btn btn-secondary">Back to Marathons List</a>
+</div>
 </body>
 </html>
