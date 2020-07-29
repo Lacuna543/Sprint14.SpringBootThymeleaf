@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
         return users.isEmpty() ? new ArrayList<>() : users;
     }
 
+    public List<User> getAllByMarathon(Marathon m) {
+        return userRepository.getAllByMarathonsEquals(m);
+    }
+
+
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(("No user /w id "+id)));
     }
@@ -62,5 +67,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<User> getAllByMarathonsEquals(Marathon marathon) {
+        return userRepository.getAllByMarathonsEquals(marathon);
     }
 }
