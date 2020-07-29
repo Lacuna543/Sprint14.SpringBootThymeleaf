@@ -17,29 +17,26 @@
 <div class="container">
 
     <h2> Marathons </h2>
-    <table border="1" class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped">
         <thead class="thead-dark">
         <tbody>
         <tr th:each="marathon, index : ${marathons}">
-<!--
-                <a th:href="/marathon"></a>
--->
 
             <td th:text="${index.count}"></td>
             <td th:text="${marathon.title}"></td>
             <td>
                 <form th:action="@{/marathons/marathon/{id}(id=${marathon.id})}">
-                    <input type="submit" value="Get Info">
+                    <input type="submit" class="btn btn-primary"value="Get Info">
                 </form>
             </td>
             <td>
                 <form th:action="@{/marathons/edit/{id}(id=${marathon.id})}">
-                    <input type="submit" value="Edit">
+                     <input type="submit"  class="btn btn-primary" value="Edit">
                 </form>
             </td>
             <td>
                 <form th:action="@{/marathons/close/{id}(id=${marathon.id})}">
-                    <input type="submit" value="Close"/>
+                     <input type="submit" class="btn btn-danger" value="Close"/>
                 </form>
             </td>
         </tr>
@@ -48,7 +45,7 @@
     </table>
     <br>
     <form action="/marathons/create">
-        <input type="submit" value="Create marathon"/>
+        <input type="submit"  class="btn btn-light" value="Create marathon"/>
     </form>
 </div>
 </body>
