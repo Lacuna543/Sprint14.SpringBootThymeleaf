@@ -38,12 +38,9 @@
 
         <tbody>
         <tr th:each="tempStud : ${users}">
-
             <td th:text="${tempStud.firstName}" />
             <td th:text="${tempStud.lastName}" />
             <td th:text="${tempStud.email}" />
-
-
             <td>
                 <!-- Add "update" button/link
                 <a th:href="@{/students/showFormForUpdate(employeeId=${tempStud.id})}"

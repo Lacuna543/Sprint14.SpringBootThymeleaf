@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Data
 public class MarathonController {
     private MarathonService marathonService;
+    private UserService userService;
 
     @GetMapping("/marathons")
     public String getAllMarathons(Model model) {
@@ -40,11 +41,18 @@ public class MarathonController {
         return "redirect:/marathons";
     }
 
-    @DeleteMapping("/marathons/close/{id}")
+    @GetMapping("/marathons/close/{id}")
     public String closeMarathons(@PathVariable("id") Long id) {
         marathonService.deleteMarathonById(id);
         return "redirect:/marathons";
     }
 
+    @GetMapping("/marathons/marathon")
+    public String marathon(@PathVariable("id") Long id, Model model) {
+     User user = userService.getUserById(id);
+       Marathon marathon = marathonService.getMarathonById(id);
+     userService.addUserToMarathon(user, marathon);
+        return "marathon";
+    }
 
 }

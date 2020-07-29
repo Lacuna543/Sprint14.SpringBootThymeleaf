@@ -2,14 +2,13 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Close Marathon</title>
+    <title>One Marathon</title>
 </head>
 <body>
-<h1> Close marathon</h1>
-<form th:action="@{/marathons/close}" class="btn btn-danger" th:object="${marathon}" method="post">
+<h2>Info about marathon</h2> TODO
+<form th:action="@{/marathons/marathon}" th:object="${marathon}" method="post">
     <button type="submit" value="Submit" >Close</button>    <!--<p><input type="submit" value="Add marathon"/></p>-->
     <input type="hidden" th:value="${marathon.id}"/>
 </form>
-
 </body>
 </html>
