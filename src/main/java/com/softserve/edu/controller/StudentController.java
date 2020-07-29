@@ -59,7 +59,6 @@ public class StudentController {
         return "student";
     }
 
-
     @GetMapping("students/{marathonId}/edit/{userId}")
     public String editUser(@PathVariable(name="marathonId") Long marathonId,
                            @PathVariable(name="userId") Long userId, Model model) {
