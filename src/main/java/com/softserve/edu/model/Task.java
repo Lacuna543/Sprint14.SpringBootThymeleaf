@@ -28,7 +28,7 @@ public class Task {
     private Sprint sprint;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "task")
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<Progress> progresses;
 
 

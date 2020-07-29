@@ -29,7 +29,7 @@ public class Sprint {
     @JoinColumn(name="marathon_id", nullable=false)
     private Marathon marathon;
 
-    @OneToMany(mappedBy="sprint")
+    @OneToMany(mappedBy="sprint",cascade = CascadeType.ALL)
     private List<Task> tasks;
 
 }

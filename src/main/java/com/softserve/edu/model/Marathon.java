@@ -22,7 +22,7 @@ public class Marathon {
     private String title;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy="marathon", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy="marathon", cascade = CascadeType.ALL)
     private Set<Sprint> sprints = new LinkedHashSet<>();
 
     @EqualsAndHashCode.Exclude
