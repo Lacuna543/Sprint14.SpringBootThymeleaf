@@ -13,4 +13,5 @@ public interface UserService {
     boolean addUserToMarathon(User user, Marathon marathon);
     boolean deleteUserFromMarathon(User user, Marathon marathon);
     void deleteById(Long id);
+    List<User> getAllByMarathonsEquals(Marathon marathon);
 }

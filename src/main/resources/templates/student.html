@@ -21,7 +21,7 @@
 
     <p class="h4 mb-4">Save student</p>
 
-    <form action="#" th:action="@{/student/save}"
+    <form action="#" th:action="@{/students/create}"
           th:object="${student}" method="POST">
 
         <!-- Add hidden form field to handle update -->
@@ -36,12 +36,21 @@
         <input type="text" th:field="*{email}"
                class="form-control mb-4 col-4" placeholder="Email">
 
+        <select name="mphs" style="margin-bottom: 25px">
+            <option th:each="mar : ${marathons}"
+                    th:value="${mar.id}"
+                    th:text="${mar.title}"
+                    th:selected="${mar.id==marathon.id}"></option>
+        </select>
+
+        <br>
+
         <button type="submit" class="btn btn-info col-2">Save</button>
 
     </form>
 
     <hr>
-    <a th:href="@{/employees/list}">Back to Employees List</a>
+    <a th:href="@{/students}">Back to Students List</a>
 
 </div>
 </body>

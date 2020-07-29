@@ -19,7 +19,14 @@
     <h3>Students</h3>
     <hr>
 
-
+    <h3>Add Student to Marathon</h3>
+    <ul>
+        <li th:each="mar1 : ${marathons}">
+            <a th:href="@{'/students/'+${mar1.id}+'/add'}" th:text="${mar1.title}"/>
+        </li>
+    </ul>
+    <br>
+    <br>
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -28,27 +35,38 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Remove from</th>
-            <th>Add</th>
             <th>Edit</th>
         </tr>
         </thead>
 
         <tbody>
         <tr th:each="tempStud : ${users}">
-            <td th:text="${tempStud.firstName}" />
+            <td>
+            <form th:action="@{'/students/0/edit/' + ${tempStud.id}}">
+                <input type="submit" th:value="${tempStud.firstName}">
+            </form>
+            </td>
             <td th:text="${tempStud.lastName}" />
             <td th:text="${tempStud.email}" />
             <td>
-                 <a th:each="mar : ${marathons}"
-                 th:href="@{'/students/'+${mar.id}+'/delete/' + ${tempStud.id}}" th:text="${mar.title}"/>
+                <ul>
+                    <li th:each="mar : ${marathons}" th:if="${mar.getUsers().contains(tempStud)}">
+                        <a th:href="@{'/students/'+${mar.id}+'/delete/' + ${tempStud.id}}"
+                           th:text="${mar.title}"
+                           />
+                    </li>
+                </ul>
             </td>
+
+
             <td>
-                <a th:each="mar : ${marathons}"
-                   th:href="@{'/students/'+${mar.id}+'/add'}" th:text="${mar.title}"/>
-            </td>
-            <td>
-                <a th:each="mar : ${marathons}"
-                   th:href="@{'/students/'+${mar.id}+'/edit/' + ${tempStud.id}}" th:text="${mar.title}"/>
+                <ul>
+                    <li th:each="mar2 : ${marathons}" th:if="${mar2.getUsers().contains(tempStud)}">
+                        <a th:href="@{'/students/'+${mar2.id}+'/edit/' + ${tempStud.id}}" th:text="${mar2.title}"/>
+                    </li>
+                </ul>
+
+
             </td>
 
          </tr>
