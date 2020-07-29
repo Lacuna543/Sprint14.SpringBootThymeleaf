@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Marathons</title>
+</head>
+<body>
+
+<div class="container">
+
+    <h2> Marathons </h2>
+    <table border="1" class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tbody>
+        <tr th:each="marathon, index : ${marathons}">
+<!--
+                <a th:href="/marathon"></a>
+-->
+
+            <td th:text="${index.count}"></td>
+            <td th:text="${marathon.title}"></td>
+            <td>
+                <form th:action="@{/marathons/marathon/{id}(id=${marathon.id})}">
+                    <input type="submit" value="Get Info">
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/marathons/edit/{id}(id=${marathon.id})}">
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/marathons/close/{id}(id=${marathon.id})}">
+                    <input type="submit" value="Close"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+        </thead>
+    </table>
+    <br>
+    <form action="/marathons/create">
+        <input type="submit" value="Create marathon"/>
+    </form>
+</div>
+</body>
+</html>
