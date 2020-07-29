@@ -1,13 +1,14 @@
 package com.softserve.edu.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
+
 
 @Data
 @ToString(exclude = {"sprints", "users"})
@@ -22,21 +23,22 @@ public class Marathon {
     private String title;
 
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy="marathon", cascade = CascadeType.REMOVE)
-    private Set<Sprint> sprints = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "marathon", cascade = CascadeType.REMOVE)
+    private List<Sprint> sprints = new LinkedList<>();
 
     @EqualsAndHashCode.Exclude
-    @ManyToMany(cascade={CascadeType.PERSIST})
+    @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(
-            name="marathon_user", joinColumns=@JoinColumn(name="marathon_id"),
-            inverseJoinColumns=@JoinColumn(name="user_id")
+            name = "marathon_user", joinColumns = @JoinColumn(name = "marathon_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private Set<User> users = new LinkedHashSet<>();
+    private List<User> users = new LinkedList<>();
 
-//    @OneToMany(
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    private Set<User> trainees = new LinkedHashSet<>();
+  /*  @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<User> trainees = new LinkedList<>();
+*/
 
-   }
+}

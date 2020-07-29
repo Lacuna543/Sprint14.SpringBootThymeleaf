@@ -1,12 +1,15 @@
 package com.softserve.edu.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
+
 
 @Data
 @Entity
@@ -22,7 +25,7 @@ public class Sprint {
     private LocalDate startDate;
 
     @Column(name="finish")
-    private LocalDate endDate;
+    private LocalDate finish;
 
     @ToString.Exclude
     @ManyToOne
